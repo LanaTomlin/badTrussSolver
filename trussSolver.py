@@ -17,7 +17,7 @@ memberNum = 0
 #truss name; start x location; start y location; end x location, end y location
 with open('bridge.csv', newline='') as csvfile:
     bridge = csv.reader(csvfile, delimiter=',')
-    memberNum = bridge.line_num
+    memberNum = memberNum + 1
     for row in bridge:
         print("test %s", row)
         ss.add_truss_element(location=[[float(row[1]), float(row[2])], [float(row[3]), float(row[4])]])
@@ -59,4 +59,5 @@ with open('bridge.csv', newline='') as csvfile:
 
 #print(ss.get_node_results_system(node_id=0), ss.get_node_results_system(node_id=-0))
 
-ss.show_structure()
+ss.show_structure(annotations=True)
+ss.show_reaction_force()
